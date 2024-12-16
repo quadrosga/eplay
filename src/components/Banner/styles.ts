@@ -13,6 +13,9 @@ export const Imagem = styled.div`
   .container {
     position: relative;
     padding-top: 340px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
   }
 
   ${TagContainer} {
@@ -20,10 +23,10 @@ export const Imagem = styled.div`
     top: 32px;
   }
 
-  ${ButtonContainer} {
-    position: absolute;
-    bottom: 64px;
-  }
+  // ${ButtonContainer} {
+  //   position: absolute;
+  //   bottom: 64px;
+  // }
 `
 export const Titulo = styled.h2`
   font-size: 36px;
