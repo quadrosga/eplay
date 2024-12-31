@@ -1,191 +1,50 @@
+import { useEffect, useState } from 'react'
 import ProductsList from '../../components/ProductsList'
-import Game from '../../models/Game'
-import resident from '../../assets/images/resident.png'
-import fifa from '../../assets/images/fifa.png'
-import diablo from '../../assets/images/diablo.png'
-import starWars from '../../assets/images/star_wars.png'
-import streetFighter from '../../assets/images/streetf.png'
-import zelda from '../../assets/images/zelda.png'
 
-const rpg: Game[] = [
-  {
-    id: 1,
-    category: 'Ação',
-    description:
-      'Resident Evil 4, conhecido no Japão como Biohazard 4, é um jogo eletrônico de survival horror...',
-    image: resident,
-    infos: ['R$ 199,90', '-10%'],
-    system: 'Windows',
-    title: 'Resident Evil 4 - Remake'
-  },
-  {
-    id: 2,
-    category: 'Esporte',
-    description:
-      'EA SPORTS™ FIFA 23 traz o Jogo de Todo Mundo aos gramados com a tecnologia HyperMotion2...',
-    image: fifa,
-    infos: ['R$ 99,90', '-50%'],
-    system: 'PS5',
-    title: 'FIFA 23'
-  },
-  {
-    id: 3,
-    category: 'Ação',
-    description:
-      'Resident Evil 4, conhecido no Japão como Biohazard 4, é um jogo eletrônico de survival horror...',
-    image: resident,
-    infos: ['R$ 199,90', '-10%'],
-    system: 'Windows',
-    title: 'Resident Evil 4 - Remake'
-  },
-  {
-    id: 4,
-    category: 'Esporte',
-    description:
-      'EA SPORTS™ FIFA 23 traz o Jogo de Todo Mundo aos gramados com a tecnologia HyperMotion2...',
-    image: fifa,
-    infos: ['R$ 99,90', '-50%'],
-    system: 'PS5',
-    title: 'FIFA 23'
-  }
-]
+import { Game } from '../Home'
 
-const acao: Game[] = [
-  {
-    id: 5,
-    category: 'RPG',
-    description:
-      'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.',
-    image: diablo,
-    infos: ['05/04'],
-    system: 'Windows',
-    title: 'Diablo 4'
-  },
-  {
-    id: 6,
-    category: 'Aventura',
-    description:
-      'Star Wars Jedi: Survivor é um próximo jogo de ação e aventura desenvolvido pela Respawn...',
-    image: starWars,
-    infos: ['05/04'],
-    system: 'Windows',
-    title: 'Star Wars Jedi Survivor'
-  },
-  {
-    id: 7,
-    category: 'Luta',
-    description:
-      'Street Fighter 6 é um próximo jogo de luta desenvolvido e publicado pela Capcom.',
-    image: streetFighter,
-    infos: ['05/04'],
-    system: 'Windows',
-    title: 'Street Fighter 6'
-  },
-  {
-    id: 8,
-    category: 'RPG',
-    description:
-      'Uma aventura épica pela terra e pelos céus de Hyrule aguarda em The Legend of Zelda™...',
-    image: zelda,
-    infos: ['R$ 99,90', '-50%'],
-    system: 'Switch',
-    title: 'FIFA 23'
-  }
-]
+const Categories = () => {
+  const [gamesAcao, setGamesAcao] = useState<Game[]>([])
+  const [gamesEsportes, setGamesEsportes] = useState<Game[]>([])
+  const [gamesSimulacao, setGamesSimulacao] = useState<Game[]>([])
+  const [gamesLuta, setGamesLuta] = useState<Game[]>([])
+  const [gamesRpg, setGamesRpg] = useState<Game[]>([])
 
-const aventura: Game[] = [
-  {
-    id: 9,
-    category: 'RPG',
-    description:
-      'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.',
-    image: diablo,
-    infos: ['05/04'],
-    system: 'Windows',
-    title: 'Diablo 4'
-  },
-  {
-    id: 10,
-    category: 'Aventura',
-    description:
-      'Star Wars Jedi: Survivor é um próximo jogo de ação e aventura desenvolvido pela Respawn...',
-    image: starWars,
-    infos: ['05/04'],
-    system: 'Windows',
-    title: 'Star Wars Jedi Survivor'
-  },
-  {
-    id: 11,
-    category: 'Luta',
-    description:
-      'Street Fighter 6 é um próximo jogo de luta desenvolvido e publicado pela Capcom.',
-    image: streetFighter,
-    infos: ['05/04'],
-    system: 'Windows',
-    title: 'Street Fighter 6'
-  },
-  {
-    id: 12,
-    category: 'RPG',
-    description:
-      'Uma aventura épica pela terra e pelos céus de Hyrule aguarda em The Legend of Zelda™...',
-    image: zelda,
-    infos: ['R$ 99,90', '-50%'],
-    system: 'Switch',
-    title: 'FIFA 23'
-  }
-]
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/acao')
+      .then((res) => res.json())
+      .then((res) => setGamesAcao(res))
 
-const fps: Game[] = [
-  {
-    id: 13,
-    category: 'RPG',
-    description:
-      'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.',
-    image: diablo,
-    infos: ['05/04'],
-    system: 'Windows',
-    title: 'Diablo 4'
-  },
-  {
-    id: 14,
-    category: 'Aventura',
-    description:
-      'Star Wars Jedi: Survivor é um próximo jogo de ação e aventura desenvolvido pela Respawn...',
-    image: starWars,
-    infos: ['05/04'],
-    system: 'Windows',
-    title: 'Star Wars Jedi Survivor'
-  },
-  {
-    id: 15,
-    category: 'Luta',
-    description:
-      'Street Fighter 6 é um próximo jogo de luta desenvolvido e publicado pela Capcom.',
-    image: streetFighter,
-    infos: ['05/04'],
-    system: 'Windows',
-    title: 'Street Fighter 6'
-  },
-  {
-    id: 16,
-    category: 'RPG',
-    description:
-      'Uma aventura épica pela terra e pelos céus de Hyrule aguarda em The Legend of Zelda™...',
-    image: zelda,
-    infos: ['R$ 99,90', '-50%'],
-    system: 'Switch',
-    title: 'FIFA 23'
-  }
-]
+    fetch('https://fake-api-tau.vercel.app/api/eplay/esportes')
+      .then((res) => res.json())
+      .then((res) => setGamesEsportes(res))
 
-const Categories = () => (
-  <>
-    <ProductsList games={rpg} title="RPG" background="gray" />
-    <ProductsList games={acao} title="Ação" background="black" />
-    <ProductsList games={aventura} title="Aventura" background="gray" />
-    <ProductsList games={fps} title="FPS" background="black" />
-  </>
-)
+    fetch('https://fake-api-tau.vercel.app/api/eplay/simulacao')
+      .then((res) => res.json())
+      .then((res) => setGamesSimulacao(res))
+
+    fetch('https://fake-api-tau.vercel.app/api/eplay/luta')
+      .then((res) => res.json())
+      .then((res) => setGamesLuta(res))
+
+    fetch('https://fake-api-tau.vercel.app/api/eplay/em-breve')
+      .then((res) => res.json())
+      .then((res) => setGamesRpg(res))
+  }, [])
+
+  return (
+    <>
+      <ProductsList games={gamesAcao} title="Ação" background="black" />
+      <ProductsList games={gamesEsportes} title="Esportes" background="gray" />
+      <ProductsList games={gamesLuta} title="Luta" background="black" />
+      <ProductsList games={gamesRpg} title="RPG" background="gray" />
+      <ProductsList
+        games={gamesSimulacao}
+        title="Simulação"
+        background="black"
+      />
+    </>
+  )
+}
 
 export default Categories

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { TagContainer } from '../Tag/styles'
-import { ButtonContainer } from '../Button/styles'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -9,6 +8,7 @@ export const Imagem = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   font-weight: bold;
+  position: relative;
 
   .container {
     position: relative;
@@ -16,6 +16,7 @@ export const Imagem = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    z-index: 1;
   }
 
   ${TagContainer} {
@@ -23,10 +24,15 @@ export const Imagem = styled.div`
     top: 32px;
   }
 
-  // ${ButtonContainer} {
-  //   position: absolute;
-  //   bottom: 64px;
-  // }
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    content: '';
+  }
 `
 export const Titulo = styled.h2`
   font-size: 36px;
