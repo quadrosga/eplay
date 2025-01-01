@@ -26,7 +26,7 @@ const Hero = ({ game }: Props) => (
         {game.prices.current && (
           <Button
             type="button"
-            title="clique aqui para adicionar este jogo ao carrinho"
+            title="Clique aqui para adicionar este jogo ao carrinho"
             variant="primary"
           >
             Adicionar ao carrinho
